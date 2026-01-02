@@ -1,0 +1,152 @@
+---
+title: Quickstart Guide
+description: Get up and running with Messi by setting up your account and creating your first documentation space in just a few minutes.
+---
+
+## Get Started in Minutes
+
+Follow this guide to create your Messi account, set up a new documentation space, add your first documents, and explore the basic interface. You will be publishing content in under 5 minutes.
+
+<Callout kind="info">
+
+**Prerequisites**
+
+- A modern web browser (`Chrome >= 100`, `Firefox >= 90`, or `Safari >= 15`)
+- An email address for account verification
+- Optional: A GitHub account for version control integration
+
+</Callout>
+
+## Step-by-Step Setup
+
+Use these steps to complete your initial Messi setup.
+
+<Steps>
+  <Step title="Create Account" icon="user-plus">
+
+  Visit `https://messi.com/signup` and enter your email and password. Messi sends a verification link—click it to activate your account.
+
+  Log in at `https://messi.com/login`.
+
+  </Step>
+
+  <Step title="Create Documentation Space" icon="folder-plus">
+
+  From the dashboard, click **New Space**.
+
+  Enter a name like `My Project Docs` and select a visibility (`Public` or `Private`).
+
+  Click **Create** to generate your space at `https://messi.com/spaces/my-project-docs`.
+
+  </Step>
+
+  <Step title="Add Your First Document" icon="file-plus">
+
+  Inside your space, click **New Page**.
+
+  Title it `Introduction` and add content using the visual editor or markdown.
+
+  Preview and click **Publish** to make it live.
+
+  </Step>
+
+  <Step title="Invite Team Members" icon="users">
+
+  Go to **Settings > Members** in your space.
+
+  Enter email addresses and send invites. Members receive email notifications to join.
+
+  </Step>
+</Steps>
+
+## Interface Tour
+
+Explore key areas of the Messi interface using these tabs.
+
+<Tabs>
+  <Tab title="Dashboard" icon="layout-dashboard">
+
+  Your central hub shows all spaces, recent activity, and quick actions like **New Space** or **Search**.
+
+  Use the search bar to find documents across spaces.
+
+  </Tab>
+
+  <Tab title="Editor" icon="edit-3">
+
+  The split-view editor supports markdown, rich text, and embeds.
+
+  Right sidebar previews changes in real-time.
+
+  Keyboard shortcuts: `<kbd>Ctrl</kbd>+<kbd>S</kbd>` to save, `<kbd>Ctrl</kbd>+<kbd>P</kbd>` to publish.
+
+  </Tab>
+
+  <Tab title="Settings" icon="settings">
+
+  Manage space permissions, custom domains, and integrations (GitHub, Slack).
+
+  Enable version history for rollback.
+
+  </Tab>
+</Tabs>
+
+## Configure CLI for Advanced Use (Optional)
+
+Install the Messi CLI to manage spaces programmatically.
+
+<CodeGroup tabs="npm,yarn">
+
+````bash
+npm install -g @messi/cli
+````
+
+````bash
+yarn global add @messi/cli
+````
+
+</CodeGroup>
+
+Authenticate with your API key:
+
+````bash
+messi auth --api-key YOUR_API_KEY
+````
+
+Create a space via CLI:
+
+````bash
+messi spaces create "CLI Project Docs" --visibility private
+````
+
+<Callout kind="tip">
+
+Store your API key securely as an environment variable: `MESSI_API_KEY=your-api-key-here`.
+
+</Callout>
+
+## Next Steps
+
+<Columns cols={3}>
+  <Card title="Documentation Basics" icon="book-open" href="/introduction">
+    Learn core concepts and best practices.
+  </Card>
+
+  <Card title="Authentication" icon="shield" href="/authentication">
+    Secure your spaces with advanced auth.
+  </Card>
+
+  <Card title="Integrations" icon="plug" href="/configuration">
+    Connect GitHub, Slack, and more.
+  </Card>
+</Columns>
+
+<Expandable title="Troubleshooting Common Issues" default-open="false">
+
+- **Verification email not received?** Check spam folder or resend from login page.
+- **Space creation fails?** Ensure your account is verified and quota not exceeded.
+- **Editor lags?** Clear browser cache or switch to markdown mode.
+
+</Expandable>
+
+You now have a fully functional Messi documentation space. Start editing and share your first page!

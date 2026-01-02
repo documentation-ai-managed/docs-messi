@@ -1,0 +1,104 @@
+---
+title: Introduction to Messi
+description: Discover Messi's documentation management platform, designed to help teams organize and maintain project documentation efficiently.
+---
+
+## Overview
+
+Messi provides a centralized platform for teams to create, organize, and maintain project documentation. You can build structured docs sites with Markdown, MDX, and custom components, all while collaborating in real-time. Messi handles versioning, search, and deployment, so you focus on content rather than infrastructure.
+
+<Callout kind="info">
+  Messi supports both public and private documentation spaces, making it ideal for open-source projects and internal wikis.
+</Callout>
+
+## Key Benefits
+
+Messi streamlines your documentation workflow with these advantages:
+
+<Columns cols={3}>
+  <Card title="Collaborate Seamlessly" icon="users" >
+    Invite team members, assign roles, and edit docs together with live previews.
+  </Card>
+  <Card title="Version Control" icon="git-branch">
+    Track changes with Git integration and rollback to any version instantly.
+  </Card>
+  <Card title="Search-Powered" icon="search">
+    Full-text search across all docs, with syntax highlighting for code snippets.
+  </Card>
+</Columns>
+
+## Core Features
+
+Explore Messi's powerful capabilities:
+
+<Tabs>
+  <Tab title="MDX Support" icon="code">
+    Write rich docs using MDX, including interactive components like tabs and steps.
+  </Tab>
+  <Tab title="Custom Themes" icon="palette">
+    Customize your docs site with brand colors (like `#3B82F6`) and layouts.
+  </Tab>
+  <Tab title="API Integrations" icon="zap">
+    Connect to external services via webhooks at `https://your-webhook-url.com/webhook`.
+  </Tab>
+</Tabs>
+
+## Quick Start
+
+Get up and running in minutes:
+
+<Steps>
+  <Step title="Sign Up" icon="user-plus">
+    Create your free account at `https://dashboard.example.com/signup`.
+  </Step>
+  <Step title="Create Space" icon="folder-plus">
+    Set up a new documentation space for your project.
+  </Step>
+  <Step title="Add First Doc" icon="file-plus">
+    Upload or write your `introduction.mdx` file.
+  </Step>
+  <Step title="Publish" icon="rocket">
+    Deploy your site with one click.
+  </Step>
+</Steps>
+
+Here is a simple example to embed a code snippet in your docs:
+
+<CodeGroup tabs="JavaScript,Python">
+  ```javascript
+  // Fetch your docs data
+  const response = await fetch('https://api.example.com/docs');
+  const docs = await response.json();
+  console.log(docs);
+  ```
+  ```python
+  # Fetch your docs data
+  import requests
+  response = requests.get('https://api.example.com/docs')
+  docs = response.json()
+  print(docs)
+  ```
+</CodeGroup>
+
+## Next Steps
+
+Dive deeper with these guides:
+
+<Columns cols={2}>
+  <Card title="Quickstart" icon="book-open" href="/quickstart">
+    Build your first docs site step-by-step.
+  </Card>
+  <Card title="Authentication" icon="lock" href="/authentication">
+    Secure your spaces and API access.
+  </Card>
+  <Card title="Configuration" icon="settings" href="/configuration">
+    Customize themes and integrations.
+  </Card>
+  <Card title="Changelog" icon="git-commit" href="/changelog">
+    Stay updated with latest releases.
+  </Card>
+</Columns>
+
+<Callout kind="tip">
+  Start with the Quickstart guide to publish your first documentation page today.
+</Callout>

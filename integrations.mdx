@@ -1,0 +1,160 @@
+---
+title: Integrations and Extensions
+description: Extend Messi's functionality by connecting it with popular third-party services and tools for seamless workflows.
+---
+
+## Overview
+
+Messi supports seamless integrations with Git providers, notification services like Slack, external embeds, and custom webhooks. These connections enable automated workflows, real-time updates, and customized data flows. Start by generating API keys in your Messi dashboard at `https://dashboard.messi.com/settings/api`.
+
+<Columns cols={2}>
+  <Card title="Git Sync" icon="git-branch" href="#git-sync">
+    Automatically sync repositories for version control.
+  </Card>
+  <Card title="Slack Notifications" icon="message-circle" href="#slack">
+    Receive alerts in your Slack channels.
+  </Card>
+  <Card title="External Embeds" icon="globe" href="#embeds">
+    Embed Messi content in your apps.
+  </Card>
+  <Card title="Webhooks" icon="zap" href="#webhooks">
+    Trigger custom actions on events.
+  </Card>
+</Columns>
+
+## Git Repository Syncing
+
+Connect Messi to your Git provider to automatically sync repositories, pull requests, and commits. This keeps your documentation in sync with code changes.
+
+<Steps>
+  <Step title="Generate Webhook in Git Provider" icon="settings">
+    In GitHub, go to your repository Settings > Webhooks > Add webhook.
+    
+    Set the Payload URL to `https://api.messi.com/v1/integrations/github/webhook`.
+    
+````bash
+Payload URL: https://api.messi.com/v1/integrations/github/webhook
+Content type: application/json
+Secret: YOUR_WEBHOOK_SECRET
+````
+
+  </Step>
+  <Step title="Configure in Messi" icon="link">
+    In Messi dashboard, navigate to Integrations > Git > Add Repository.
+    
+    Enter your repository URL and the webhook secret.
+  </Step>
+  <Step title="Test Sync" icon="play">
+    Push a commit to trigger the sync. Verify in Messi Docs.
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+  Enable branch filtering in advanced settings to sync only `main` or `develop` branches.
+</Callout>
+
+## Slack Notifications
+
+Set up Slack notifications for Messi events like document updates or user actions.
+
+<Tabs>
+  <Tab title="Incoming Webhook" icon="arrow-right">
+    Create an incoming webhook in Slack.
+    
+    Use this endpoint in Messi: `https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK`.
+    
+````javascript
+{
+  "text": "New document updated in Messi: https://dashboard.messi.com/docs/project-123"
+}
+````
+  </Tab>
+  <Tab title="App Configuration" icon="settings">
+    Install the Messi Slack app from `https://slack.com/apps`.
+    
+    Authorize scopes: `chat:write`, `channels:read`.
+  </Tab>
+</Tabs>
+
+## Embedding External Content
+
+Embed live Messi previews or dashboards into your tools like Notion or Confluence.
+
+Generate an embed code from the Messi share menu:
+
+````html
+<iframe
+  src="https://dashboard.messi.com/embed/docs/project-123?theme=dark"
+  width="100%"
+  height="600"
+  frameborder="0">
+</iframe>
+````
+
+Customize with query params: `?theme=light&readOnly=true`.
+
+<Callout kind="info">
+  Embeds respect user permissions. Guests see public views only.
+</Callout>
+
+## Custom Webhook Configurations
+
+Receive real-time events from Messi via webhooks. Configure in Integrations > Webhooks.
+
+<ParamField path="event" param-type="string" required="true">
+  Event type: `document.updated`, `user.invited`, `project.deleted`.
+</ParamField>
+
+<ParamField header="X-Messi-Signature" param-type="string" required="true">
+  HMAC SHA256 signature for verification. Use `YOUR_WEBHOOK_SECRET`.
+</ParamField>
+
+<Request show-lines="true">
+  ```json
+  POST /your-webhook-endpoint
+  ```
+</Request>
+
+<Response tabs="200">
+  ```json
+  {
+    "event": "document.updated",
+    "project_id": "proj_abc123",
+    "timestamp": "2024-10-15T10:30:00Z",
+    "data": {
+      "doc_id": "doc_xyz789",
+      "title": "Updated README"
+    }
+  }
+  ```
+</Response>
+
+<Expandable title="Verify Signature" default-open="false">
+  Compute HMAC with your secret:
+  
+````javascript
+const crypto = require('crypto');
+const signature = crypto
+  .createHmac('sha256', 'YOUR_WEBHOOK_SECRET')
+  .update(payload)
+  .digest('hex');
+````
+</Expandable>
+
+<CodeGroup tabs="Node.js,Python">
+  ```javascript
+  app.post('/webhook', (req, res) => {
+    console.log('Messi event:', req.body.event);
+    res.status(200).send('OK');
+  });
+  ```
+  ```python
+  from flask import Flask, request
+  app = Flask(__name__)
+  
+  @app.route('/webhook', methods=['POST'])
+  def webhook():
+      print('Messi event:', request.json['event'])
+      return 'OK', 200
+  ```
+</CodeGroup>

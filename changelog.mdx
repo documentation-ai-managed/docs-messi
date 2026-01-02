@@ -1,0 +1,140 @@
+---
+title: Changelog
+description: Review the release history of Messi, including new features, improvements, and important updates.
+---
+
+## Overview
+
+Messi releases updates regularly to enhance your documentation experience. You can find detailed release notes below, organized by version. Each release includes new features, improvements, bug fixes, and any breaking changes.
+
+<Columns cols={3}>
+  <Card title="Latest: v1.2.0" icon="zap" href="#v120">
+    Real-time collaboration and performance boosts.
+  </Card>
+  <Card title="v1.1.0" icon="star" href="#v110">
+    Advanced search and custom themes.
+  </Card>
+  <Card title="v1.0.0" icon="rocket" href="#v100">
+    Initial stable release.
+  </Card>
+</Columns>
+
+<Callout kind="info">
+  Subscribe to our RSS feed or join the Discord community to get notified about new releases.
+</Callout>
+
+## Recent Releases
+
+<Update label="2024-10-15" description="v1.2.0" tags={["feature", "improvement"]}>
+
+## New Features
+
+- Added real-time collaboration for teams to edit docs simultaneously
+- Introduced version history with diff viewer for tracking changes
+- New embed blocks for videos and interactive components
+
+## Improvements
+
+- Enhanced search with fuzzy matching and full-text indexing
+- Optimized rendering speed by `>40%` for large doc sites
+- Better mobile responsiveness across all themes
+
+## Bug Fixes
+
+- Fixed export to PDF failing on pages with tables
+- Resolved authentication issues during webhook callbacks
+- Patched potential XSS in custom HTML blocks
+
+</Update>
+
+<Update label="2024-09-20" description="v1.1.0" tags={["feature", "bugfix"]}>
+
+## New Features
+
+- Custom themes with CSS variables support
+- Advanced search filters by tags, authors, and dates
+- Integrated analytics dashboard for doc usage
+
+## Bug Fixes
+
+- Corrected sidebar navigation jumping on scroll
+- Fixed image lazy-loading in preview mode
+- Resolved conflicts with certain Markdown extensions
+
+</Update>
+
+<Update label="2024-08-10" description="v1.0.0" tags={["feature", "breaking"]}>
+
+## New Features
+
+- Core documentation workspace with folders and permissions
+- MDX support for interactive components
+- API for programmatic doc management
+
+## Breaking Changes
+
+- Updated config format from YAML to JSON for better parsing
+- Removed legacy shortcodes in favor of native components
+
+</Update>
+
+## How to Update
+
+Follow these steps to upgrade Messi to the latest version.
+
+<Steps>
+  <Step title="Backup Your Data" icon="database">
+    Export your workspace:
+    
+````bash
+messi export --workspace my-docs --format zip
+````
+  </Step>
+  <Step title="Update CLI" icon="download">
+    <Tabs>
+      <Tab title="npm" icon="package">
+````bash
+npm install messi@latest -g
+````
+      </Tab>
+      <Tab title="yarn" icon="package">
+````bash
+yarn global add messi@latest
+````
+      </Tab>
+      <Tab title="Docker" icon="docker">
+````bash
+docker pull messidocs/messi:latest
+````
+      </Tab>
+    </Tabs>
+  </Step>
+  <Step title="Migrate Config" icon="settings">
+    Run the migration tool if upgrading from v1.0:
+    
+````bash
+messi migrate --config config.json
+````
+  </Step>
+  <Step title="Restart Server" icon="play">
+    Restart your Messi instance and verify at `http://localhost:3000`.
+  </Step>
+</Steps>
+
+<Callout kind="tip">
+  Check the [upgrade guide](/quickstart#upgrading) for version-specific instructions.
+</Callout>
+
+## Upcoming Changes
+
+<Expandable title="Preview of v1.3.0" default-open="false">
+
+Expect these enhancements in the next release:
+
+- AI-powered content suggestions
+- Native Git integration for version control
+- Multi-workspace support
+
+Stay tuned for the beta release announcement.
+
+</Expandable>
